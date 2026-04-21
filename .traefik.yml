@@ -1,11 +1,7 @@
 displayName: Mapcom Traefik Plugin
 type: middleware
-iconPath: .assets/icon.png
-
 import: prod1gitlab.mapcom.local/development/traefikplugin
-
 summary: 'Mapcom Traefik Plugin'
-
 testData:
   Headers:
     X-Demo: test
