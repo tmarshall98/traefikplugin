@@ -1,6 +1,6 @@
 displayName: Mapcom Traefik Plugin
 type: middleware
-import: prod1gitlab.mapcom.local/development/traefikplugin
+import: github.com/tmarshall98/traefikplugin
 summary: 'Mapcom Traefik Plugin'
 testData:
   Headers:

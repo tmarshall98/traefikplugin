@@ -1,3 +1,3 @@
-module prod1gitlab.mapcom.local/development/traefikplugin
+module github.com/tmarshall98/traefikplugin
 
 go 1.19

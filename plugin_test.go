@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"prod1gitlab.mapcom.local/development/traefikplugin"
+	"github.com/tmarshall98/traefikplugin"
 )
 
 func TestDemo(t *testing.T) {
