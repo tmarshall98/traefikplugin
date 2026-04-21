@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/traefik/plugindemo"
+	"prod1gitlab.mapcom.local/development/traefikplugin"
 )
 
 func TestDemo(t *testing.T) {
@@ -15,6 +15,7 @@ func TestDemo(t *testing.T) {
 	cfg.Headers["X-Method"] = "[[.Method]]"
 	cfg.Headers["X-URL"] = "[[.URL]]"
 	cfg.Headers["X-URL"] = "[[.URL]]"
+	cfg.Headers["X-Test-FromHeader"] = `[[ .Header.Get "Cf-Connecting-Ip"]]`
 	cfg.Headers["X-Plugin"] = "test"
 
 	ctx := context.Background()
@@ -31,6 +32,7 @@ func TestDemo(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	req.Header.Set("Cf-Connecting-Ip", "TEST")
 
 	handler.ServeHTTP(recorder, req)
 
@@ -38,12 +40,13 @@ func TestDemo(t *testing.T) {
 	assertHeader(t, req, "X-URL", "http://localhost")
 	assertHeader(t, req, "X-Method", "GET")
 	assertHeader(t, req, "X-Plugin", "test")
+	assertHeader(t, req, "X-Test-FromHeader", "TEST")
 }
 
 func assertHeader(t *testing.T, req *http.Request, key, expected string) {
 	t.Helper()
-
-	if req.Header.Get(key) != expected {
-		t.Errorf("invalid header value: %s", req.Header.Get(key))
+	got := req.Header.Get(key)
+	if got != expected {
+		t.Errorf("invalid header value: got=%s, expected=%s", got, req.Header.Get(key))
 	}
 }

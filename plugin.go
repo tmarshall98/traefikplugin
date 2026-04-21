@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"log"
 	"net/http"
 	"text/template"
 )
@@ -57,7 +58,7 @@ func (a *Plugin) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 			http.Error(rw, err.Error(), http.StatusInternalServerError)
 			return
 		}
-
+		log.Printf("Setting header %s to value %s", key, writer.String())
 		req.Header.Set(key, writer.String())
 	}
 
