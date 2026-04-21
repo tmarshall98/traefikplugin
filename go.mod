@@ -1,3 +1,3 @@
-module github.com/traefik/plugindemo
+module prod1gitlab.mapcom.local/development/traefikplugin
 
 go 1.19

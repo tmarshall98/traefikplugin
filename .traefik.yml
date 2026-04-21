@@ -1,10 +1,10 @@
-displayName: Demo Plugin
+displayName: Mapcom Traefik Plugin
 type: middleware
 iconPath: .assets/icon.png
 
-import: github.com/traefik/plugindemo
+import: prod1gitlab.mapcom.local/development/traefikplugin
 
-summary: '[Demo] Add Request Header'
+summary: 'Mapcom Traefik Plugin'
 
 testData:
   Headers:
